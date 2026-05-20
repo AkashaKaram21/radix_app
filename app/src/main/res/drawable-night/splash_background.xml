@@ -3,5 +3,5 @@
     <item android:drawable="@color/background_dark" />
     <item
         android:gravity="center"
-        android:drawable="@drawable/ic_launcher_foreground" />
+        android:drawable="@mipmap/logo_app_foreground" />
 </layer-list>

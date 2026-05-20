@@ -14,19 +14,19 @@
     <color name="status_danger_light">#E57373</color>
     <color name="primary_light_tint_light">#E1F5FE</color>
 
-    <!-- Dark: Neon Tech -->
-    <color name="background_dark">#121418</color>
-    <color name="surface_dark">#1E1F2E</color>
-    <color name="surface_hover_dark">#2A2B3D</color>
-    <color name="text_primary_dark">#FFFFFF</color>
-    <color name="text_secondary_dark">#A0A0B0</color>
-    <color name="border_subtle_dark">#26B388FF</color>
-    <color name="accent_primary_dark">#B388FF</color>
-    <color name="accent_secondary_dark">#FF80AB</color>
+    <!-- Dark: Purple Noir -->
+    <color name="background_dark">#0E0E0E</color>
+    <color name="surface_dark">#161828</color>
+    <color name="surface_hover_dark">#1F2240</color>
+    <color name="text_primary_dark">#F2F2F2</color>
+    <color name="text_secondary_dark">#CC99DD</color>
+    <color name="border_subtle_dark">#407048A0</color>
+    <color name="accent_primary_dark">#7048A0</color>
+    <color name="accent_secondary_dark">#CC99DD</color>
     <color name="status_success_dark">#00E676</color>
     <color name="status_warning_dark">#FFEA00</color>
     <color name="status_danger_dark">#FF1744</color>
-    <color name="primary_light_tint_dark">#2A1F3D</color>
+    <color name="primary_light_tint_dark">#2A1A40</color>
 
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
