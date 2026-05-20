@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Radix Health</string>
+    <string name="app_brand">RADIX</string>
+    <string name="app_tagline">Panel Médico Inteligente</string>
+
+    <!-- Login -->
+    <string name="login_title">Iniciar Sesión</string>
+    <string name="login_email">Email</string>
+    <string name="login_email_hint">tu@email.com</string>
+    <string name="login_password">Código de seguridad</string>
+    <string name="login_password_hint">••••••••</string>
+    <string name="login_remember">Recordarme</string>
+    <string name="login_button">Iniciar Sesión</string>
+    <string name="login_forgot">¿Olvidaste tu contraseña?</string>
+    <string name="login_family">Acceso para Familiares</string>
+    <string name="login_footer">Conexión Encriptada</string>
+    <string name="login_error_empty">Por favor complete todos los campos</string>
+    <string name="login_error_credentials">Credenciales inválidas</string>
+    <string name="login_error_network">No se pudo conectar al servidor. Verifica tu conexión.</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_title">Radix Health</string>
+    <string name="onboarding_subtitle">Selecciona la paleta de color antes de iniciar sesión.</string>
+    <string name="onboarding_confirm">Confirmar paleta</string>
+    <string name="onboarding_light">Modo claro</string>
+    <string name="onboarding_dark">Modo oscuro</string>
+    <string name="onboarding_system">Sistema</string>
+
+    <!-- Change password -->
+    <string name="change_password_title">Cambio de contraseña obligatorio</string>
+    <string name="change_password_subtitle">Por seguridad, debes establecer una nueva contraseña antes de continuar.</string>
+    <string name="change_password_new">Nueva contraseña</string>
+    <string name="change_password_confirm">Confirmar contraseña</string>
+    <string name="change_password_save">Guardar contraseña</string>
+    <string name="change_password_error_short">La contraseña debe tener al menos 8 caracteres</string>
+    <string name="change_password_error_mismatch">Las contraseñas no coinciden</string>
+    <string name="change_password_success">Contraseña actualizada correctamente</string>
+
+    <!-- Recover -->
+    <string name="recover_title">Recuperar contraseña</string>
+    <string name="recover_subtitle">Te enviaremos un código a tu email para restablecer el acceso.</string>
+    <string name="recover_send">Enviar instrucciones</string>
+
+    <!-- Family -->
+    <string name="family_login_title">Acceso Familiar</string>
+    <string name="family_login_subtitle">Introduce el código facilitado por el paciente.</string>
+    <string name="family_code">Código de acceso</string>
+    <string name="family_open">Ver paciente</string>
+    <string name="family_dashboard_title">Estado del paciente</string>
+
+    <!-- Bottom navigation -->
+    <string name="nav_dashboard">Inicio</string>
+    <string name="nav_treatment">Tratamiento</string>
+    <string name="nav_health">Salud</string>
+    <string name="nav_alerts">Alertas</string>
+    <string name="nav_settings">Ajustes</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_greeting">Hola, %1$s</string>
+    <string name="dashboard_no_data">Sin datos disponibles</string>
+    <string name="dashboard_treatment_inactive">Sin tratamiento activo</string>
+    <string name="dashboard_treatment_active">Tratamiento activo</string>
+    <string name="dashboard_isolation_remaining">%1$d%% restante</string>
+    <string name="dashboard_alerts_pending">%1$d pendientes</string>
+    <string name="dashboard_radiation">Radiación</string>
+    <string name="dashboard_heart">Cardíaco</string>
+    <string name="dashboard_sleep">Sueño</string>
+    <string name="dashboard_activity">Actividad</string>
+    <string name="dashboard_doctor">Médico</string>
+
+    <!-- Treatment -->
+    <string name="treatment_title">Detalles del tratamiento</string>
+    <string name="treatment_room">Habitación</string>
+    <string name="treatment_initial_dose">Dosis inicial</string>
+    <string name="treatment_safety_threshold">Umbral seguro</string>
+    <string name="treatment_isolation_days">Días de aislamiento</string>
+    <string name="treatment_start">Inicio</string>
+    <string name="treatment_end">Fin</string>
+    <string name="treatment_status">Estado</string>
+    <string name="treatment_status_active">Activo</string>
+    <string name="treatment_status_completed">Completado</string>
+    <string name="treatment_remaining_time">Tiempo restante</string>
+
+    <!-- Alerts -->
+    <string name="alerts_title">Alertas</string>
+    <string name="alerts_all">Todas</string>
+    <string name="alerts_pending">Pendientes</string>
+    <string name="alerts_resolved">Resueltas</string>
+    <string name="alerts_resolve">Marcar como resuelta</string>
+    <string name="alerts_empty">No hay alertas para mostrar.</string>
+
+    <!-- Health -->
+    <string name="health_title">Datos de salud</string>
+    <string name="health_bpm">Frecuencia cardíaca</string>
+    <string name="health_steps">Pasos</string>
+    <string name="health_distance">Distancia</string>
+    <string name="health_radiation">Radiación actual</string>
+    <string name="health_no_radiation">Sin medición de radiación</string>
+
+    <!-- Watch -->
+    <string name="watch_title">Reloj conectado</string>
+    <string name="watch_model">Modelo</string>
+    <string name="watch_imei">IMEI</string>
+    <string name="watch_status">Estado</string>
+    <string name="watch_status_active">Activo</string>
+    <string name="watch_status_inactive">Inactivo</string>
+    <string name="watch_empty">No hay dispositivos vinculados</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Ajustes</string>
+    <string name="settings_account">Cuenta</string>
+    <string name="settings_personal">Información personal</string>
+    <string name="settings_family_code">Código de acceso familiar</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_language">Idioma</string>
+    <string name="settings_contact_doctor">Contactar médico</string>
+    <string name="settings_logout">Cerrar sesión</string>
+    <string name="settings_notifications">Notificaciones</string>
+
+    <!-- General -->
+    <string name="generic_loading">Cargando…</string>
+    <string name="generic_retry">Reintentar</string>
+    <string name="generic_error">Se ha producido un error</string>
+    <string name="generic_close">Cerrar</string>
+    <string name="generic_save">Guardar</string>
+    <string name="generic_cancel">Cancelar</string>
+</resources>

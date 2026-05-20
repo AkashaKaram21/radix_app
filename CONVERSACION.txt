@@ -1,0 +1,312 @@
+============================================================
+ CONVERSACIÓN - PROYECTO radix-app-android
+============================================================
+
+
+────────────────────────────────────────────────────────────
+USUARIO
+────────────────────────────────────────────────────────────
+C:\Users\Akasha\Desktop\radix-app-ios  quiero que me hagas un
+proyecto de Android Studio que haga los mismo que te acabo de
+pasar de radix-app pero en kotlin y sigue los apuntes de
+https://davidfs-itic.github.io/davidfs-itic/Android/
+
+
+────────────────────────────────────────────────────────────
+CLAUDE
+────────────────────────────────────────────────────────────
+Exploro la app iOS (Expo / React Native + TypeScript) para
+entender qué hace:
+
+- Stack iOS: Expo SDK 54, expo-router, React Native 0.81, TS.
+- Backend: https://api.raddix.pro/v1/ (prod) o
+  http://localhost:8080/v2/ (dev). Auth con Bearer token en
+  expo-secure-store.
+- Pantallas: Splash, Login, Recover, Onboarding (theme gate),
+  ChangePassword, FamilyLogin, FamilyDashboard, MainTabs
+  (Dashboard, Treatment, Health, Alerts, Settings, Watch,
+  Profile, etc.).
+- DESIGN.md: paletas "Radix Health Dual UI System 3.0.0"
+  light=Soft UI / dark=Neon Tech, cards 24dp, inputs 12dp,
+  botones primarios píldora, valores clínicos sin fallback.
+
+Consulto los apuntes davidfs-itic/Android — usa:
+- Kotlin (no Java)
+- Layouts XML (no Jetpack Compose)
+- MVVM (ViewModel + Observer)
+- Retrofit para HTTP
+- DataStore Preferences para persistencia
+- Glide para imágenes
+- MPAndroidChart para gráficos
+
+Procedo a crear el proyecto en
+C:\Users\Akasha\Desktop\radix-app-android con esa arquitectura.
+
+ESTRUCTURA CREADA:
+  radix-app-android/
+   ├ settings.gradle.kts, build.gradle.kts, gradle.properties
+   ├ gradle/wrapper/gradle-wrapper.properties
+   ├ README.md, .gitignore
+   └ app/
+      ├ build.gradle.kts, proguard-rules.pro
+      └ src/main/
+         ├ AndroidManifest.xml
+         ├ java/com/radix/health/
+         │   ├ RadixApplication.kt
+         │   ├ data/
+         │   │   ├ model/Models.kt       (POJOs Moshi)
+         │   │   ├ remote/ApiService.kt
+         │   │   ├ remote/AuthInterceptor.kt
+         │   │   ├ remote/RetrofitClient.kt
+         │   │   └ repository/RadixRepository.kt
+         │   ├ session/SessionManager.kt (DataStore)
+         │   ├ ui/
+         │   │   ├ SplashActivity.kt
+         │   │   ├ onboarding/OnboardingActivity.kt
+         │   │   ├ login/LoginActivity + LoginViewModel
+         │   │   ├ recover/RecoverActivity
+         │   │   ├ changepassword/ + ViewModel
+         │   │   ├ family/FamilyLogin + FamilyDashboard
+         │   │   ├ main/MainActivity (BottomNavigation)
+         │   │   ├ dashboard/Fragment + ViewModel
+         │   │   ├ treatment/Fragment + ViewModel
+         │   │   ├ health/Fragment + ViewModel (MPAndroidChart)
+         │   │   ├ alerts/Fragment + Adapter + ViewModel
+         │   │   └ settings/Fragment + ViewModel
+         │   └ util/Formatters, IsolationProgress, UiState
+         └ res/
+            ├ layout/ (12 layouts XML)
+            ├ menu/bottom_nav.xml
+            ├ navigation/main_nav.xml
+            ├ drawable/ (iconos vectoriales, badges, splash)
+            ├ mipmap-anydpi-v26/ (adaptive icon)
+            └ values/ + values-night/ (colores, temas, strings)
+
+Endpoints implementados (idénticos a iOS):
+  POST /api/auth/login
+  PUT  /api/users/{id}
+  GET  /api/patients/profile/{userId}
+  GET  /api/treatments/patient/{patientId}
+  GET  /api/alerts/patient/{patientId}
+  PUT  /api/alerts/{id}/resolve
+  GET  /api/health-metrics/patient/{patientId}?days=30
+  GET  /api/radiation-logs/patient/{patientId}?days=30
+  GET  /api/watch/patient/{patientId}/latest
+  GET  /api/messages/patient/{patientId}
+  GET  /api/family/patient/{code}
+
+Tema Material con paletas light/dark según DESIGN.md de iOS.
+
+
+────────────────────────────────────────────────────────────
+USUARIO (pega log de crash)
+────────────────────────────────────────────────────────────
+Crash al lanzar: <bitmap> requires a valid 'src' attribute
+
+(splash_background.xml usaba <bitmap src="@mipmap/ic_launcher"
+pero ic_launcher es un adaptive-icon XML, no un bitmap real).
+
+
+────────────────────────────────────────────────────────────
+CLAUDE
+────────────────────────────────────────────────────────────
+Fix: reemplazo el <bitmap> en splash_background.xml por un
+<item> que dibuja directamente @drawable/ic_launcher_foreground
+sobre el color de fondo del tema. Sin pasar por <bitmap>.
+
+
+────────────────────────────────────────────────────────────
+USUARIO
+────────────────────────────────────────────────────────────
+C:\Users\Akasha\Downloads\logo.png el logo es este de app
+
+
+────────────────────────────────────────────────────────────
+CLAUDE
+────────────────────────────────────────────────────────────
+Veo el logo: casa con corazón dentro en lavanda sobre fondo
+negro, texto RADIX debajo. 397x252 PNG.
+
+Lo copio a app/src/main/res/drawable-nodpi/radix_logo.png
+y lo aplico en:
+  • Splash: fondo negro de marca + logo centrado.
+  • Launcher icon: como foreground del adaptive icon, fondo
+    negro #0E0E10.
+  • LoginActivity: ImageView reemplaza el texto RADIX.
+  • OnboardingActivity: ImageView reemplaza el título.
+
+Añado dos colores nuevos en colors.xml:
+  brand_black=#0E0E10, brand_lavender=#D9B8FF.
+
+
+────────────────────────────────────────────────────────────
+USUARIO
+────────────────────────────────────────────────────────────
+dime el usuario para hacer logIn
+
+
+────────────────────────────────────────────────────────────
+CLAUDE
+────────────────────────────────────────────────────────────
+Busco en el proyecto iOS y los apuntes — no hay credenciales
+de prueba documentadas.
+
+El login va contra un backend real (api.raddix.pro/v1/ o
+localhost:8080/v2/). Hace falta:
+  1. Un usuario real registrado en el backend, o
+  2. Levantar el backend Spring localmente y registrar uno
+     vía POST /api/auth/register.
+
+Pregunto si tiene documentación o un usuario seed.
+
+
+────────────────────────────────────────────────────────────
+USUARIO
+────────────────────────────────────────────────────────────
+me dijeron que la contra es 1234567A
+
+
+────────────────────────────────────────────────────────────
+CLAUDE
+────────────────────────────────────────────────────────────
+Vale, falta el email — el endpoint POST /api/auth/login
+requiere email + password. Pregunto por el email.
+
+
+────────────────────────────────────────────────────────────
+USUARIO
+────────────────────────────────────────────────────────────
+y el usuario es ana@paciente.com
+
+
+────────────────────────────────────────────────────────────
+CLAUDE
+────────────────────────────────────────────────────────────
+Aviso: la build debug está apuntando al backend LOCAL
+(http://10.0.2.2:8080/v2/). Si la cuenta de Ana está en
+producción (api.raddix.pro), el login no funcionará desde
+debug.
+
+Pregunto: ¿producción o local?
+
+
+────────────────────────────────────────────────────────────
+USUARIO (selecciona)
+────────────────────────────────────────────────────────────
+Producción (api.raddix.pro)
+
+
+────────────────────────────────────────────────────────────
+CLAUDE
+────────────────────────────────────────────────────────────
+Cambio app/build.gradle.kts → buildType debug ahora apunta a
+"https://api.raddix.pro/v1/".
+
+Instrucciones: Build → Clean Project → Rebuild Project →
+Run ▶. Email ana@paciente.com, password 1234567A. Si responde
+con mustChangePassword=true la app llevará a la pantalla de
+cambio de contraseña.
+
+
+────────────────────────────────────────────────────────────
+USUARIO
+────────────────────────────────────────────────────────────
+que has hecho con el diseño app dejalo como estaba antes todo
+el diseño
+
+
+────────────────────────────────────────────────────────────
+CLAUDE
+────────────────────────────────────────────────────────────
+Revierto todo el cambio del logo:
+
+  • splash_background.xml: vuelve a fondo del tema + vector
+    ic_launcher_foreground centrado.
+  • Launcher icon: vector original sobre #29B6F6 (cian).
+  • LoginActivity: vuelve el texto "RADIX" con letter-spacing.
+  • OnboardingActivity: vuelve el texto "Radix Health".
+  • Quito brand_black y brand_lavender de colors.xml.
+
+El radix_logo.png se queda en drawable-nodpi/ por si quieres
+recuperarlo más adelante (ya no se renderiza en ningún sitio).
+
+
+────────────────────────────────────────────────────────────
+USUARIO (pega nuevo log de crash)
+────────────────────────────────────────────────────────────
+Caused by: Resources$NotFoundException: File
+res/drawable/splash_background.xml from drawable resource ID
+
+
+────────────────────────────────────────────────────────────
+CLAUDE
+────────────────────────────────────────────────────────────
+El crash es porque splash_background usaba
+"?android:colorBackground" — referencia a atributo del tema
+que no se puede resolver cuando el drawable se infla como
+windowBackground (antes de aplicar el tema).
+
+Fix:
+  • drawable/splash_background.xml ahora usa color literal
+    @color/background_light + ic_launcher_foreground.
+  • Nuevo drawable-night/splash_background.xml con
+    @color/background_dark para el modo oscuro.
+  • Quitados android:width/height inline del <item>.
+
+Instrucciones: Build → Clean Project → Run ▶. Si sigue
+crasheando, desinstalar la app del emulador y reinstalar.
+
+
+────────────────────────────────────────────────────────────
+USUARIO
+────────────────────────────────────────────────────────────
+copia toda la conversa que hemos tenido en txt
+
+
+────────────────────────────────────────────────────────────
+CLAUDE
+────────────────────────────────────────────────────────────
+Guardo este archivo en
+C:\Users\Akasha\Desktop\radix-app-android\CONVERSACION.txt
+
+
+============================================================
+ RESUMEN TÉCNICO DEL PROYECTO ENTREGADO
+============================================================
+
+Stack:
+  - Kotlin
+  - Layouts XML (no Compose)
+  - MVVM (ViewModel + LiveData)
+  - Retrofit + Moshi
+  - DataStore Preferences
+  - Material Components
+  - Navigation Component + BottomNavigationView
+  - MPAndroidChart (gráfico de salud)
+  - Glide (dependencia añadida para uso futuro)
+
+Configuración API:
+  - release: https://api.raddix.pro/v1/
+  - debug:   https://api.raddix.pro/v1/ (cambiable en
+             app/build.gradle.kts)
+
+Credenciales de prueba:
+  - Email:    ana@paciente.com
+  - Password: 1234567A
+
+Para abrir en Android Studio:
+  1. File → Open → seleccionar carpeta radix-app-android
+  2. Esperar sync de Gradle
+  3. Crear emulador con API ≥ 24
+  4. Build → Clean Project → Run ▶
+
+Archivos clave para retocar diseño:
+  - res/values/themes.xml, values-night/themes.xml
+  - res/values/colors.xml
+  - res/values/dimens.xml
+  - res/values/strings.xml (todos los textos)
+  - res/layout/activity_login.xml
+  - res/layout/fragment_dashboard.xml
+  - res/drawable/splash_background.xml
+
+============================================================

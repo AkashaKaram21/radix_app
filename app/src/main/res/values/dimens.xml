@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="screen_padding">24dp</dimen>
+    <dimen name="card_padding">20dp</dimen>
+    <dimen name="card_padding_small">16dp</dimen>
+    <dimen name="card_radius">24dp</dimen>
+    <dimen name="input_radius">12dp</dimen>
+    <dimen name="gap_small">8dp</dimen>
+    <dimen name="gap_medium">12dp</dimen>
+    <dimen name="gap_large">24dp</dimen>
+    <dimen name="touch_target">48dp</dimen>
+
+    <dimen name="text_title">22sp</dimen>
+    <dimen name="text_section">16sp</dimen>
+    <dimen name="text_metric">28sp</dimen>
+    <dimen name="text_body">14sp</dimen>
+    <dimen name="text_helper">12sp</dimen>
+    <dimen name="text_label">11sp</dimen>
+</resources>

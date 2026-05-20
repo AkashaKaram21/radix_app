@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Light: Soft UI -->
+    <color name="background_light">#F5F8FA</color>
+    <color name="surface_light">#FFFFFF</color>
+    <color name="surface_hover_light">#F0F4F8</color>
+    <color name="text_primary_light">#202124</color>
+    <color name="text_secondary_light">#5F6368</color>
+    <color name="border_subtle_light">#00000000</color>
+    <color name="accent_primary_light">#29B6F6</color>
+    <color name="accent_secondary_light">#CE93D8</color>
+    <color name="status_success_light">#81C784</color>
+    <color name="status_warning_light">#FFD54F</color>
+    <color name="status_danger_light">#E57373</color>
+    <color name="primary_light_tint_light">#E1F5FE</color>
+
+    <!-- Dark: Neon Tech -->
+    <color name="background_dark">#121418</color>
+    <color name="surface_dark">#1E1F2E</color>
+    <color name="surface_hover_dark">#2A2B3D</color>
+    <color name="text_primary_dark">#FFFFFF</color>
+    <color name="text_secondary_dark">#A0A0B0</color>
+    <color name="border_subtle_dark">#26B388FF</color>
+    <color name="accent_primary_dark">#B388FF</color>
+    <color name="accent_secondary_dark">#FF80AB</color>
+    <color name="status_success_dark">#00E676</color>
+    <color name="status_warning_dark">#FFEA00</color>
+    <color name="status_danger_dark">#FF1744</color>
+    <color name="primary_light_tint_dark">#2A1F3D</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+</resources>
